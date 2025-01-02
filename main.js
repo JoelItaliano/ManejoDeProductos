@@ -1,12 +1,16 @@
-/**
+/*/**
  * Lista de productos iniciales.
  * @type {Array<{id: number, nombre: string, cantidad: number, precioUnidad: number}>}
  */
 const listaProductos = [
-    { id: 1, nombre: "Tomate", cantidad: 10, precioUnidad: 20 },
-    { id: 2, nombre: "Peras", cantidad: 5, precioUnidad: 10 },
-    { id: 3, nombre: "Manzanas", cantidad: 15, precioUnidad: 12 },
+    { id: 1, nombre: "Lapicera", cantidad: 10, precioUnidad: 20 },
+    { id: 2, nombre: "Goma de borrar", cantidad: 5, precioUnidad: 10 },
+    { id: 3, nombre: "Tijeras", cantidad: 15, precioUnidad: 12 },
+    { id: 3, nombre: "Goma de pegar", cantidad: 15, precioUnidad: 12 },
+    { id: 3, nombre: "Liqui Papper", cantidad: 15, precioUnidad: 12 }
 ];
+
+
 
 /**
  * Verifica si el valor proporcionado no es un número válido.
