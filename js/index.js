@@ -1,6 +1,7 @@
 const contenedorProductos = document.querySelector('.productos');
 const carritoIcono = document.getElementById("icono-carrito");
 const carrito = document.getElementById("carrito");
+const carritoProductos = [];
 
 const listaProductos = [
     { id: 1, nombre: "Lapicera", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLxlcmXv0_ctrKEZ2qCZ6HB8gZgagF3B3kpQ&s", cantidad: 10, precioUnidad: 20 },
@@ -10,7 +11,7 @@ const listaProductos = [
     { id: 5, nombre: "Liquid Paper", img:"https://http2.mlstatic.com/D_NQ_NP_738879-MLA51321774945_082022-O.webp", cantidad: 15, precioUnidad: 12 }
 ];
 
-let carritoProductos = []; // Lista para los productos del carrito
+
 
 function expandirCarrito() {
     carrito.classList.toggle("visible");
@@ -26,6 +27,19 @@ carritoIcono.addEventListener("click", (e) => {
     e.preventDefault(); 
     expandirCarrito();
 });
+
+function asignarEventosBotones() {
+    const botones = document.querySelectorAll(".card-producto button");
+
+    botones.forEach(boton => {
+        boton.addEventListener("click", (e) => {
+            const productoId = parseInt(e.target.getAttribute("data-id"));
+            const productoSeleccionado = listaProductos.find(prod => prod.id === productoId);
+            agregarAlCarrito(productoSeleccionado);
+        });
+    });
+}
+
 
 function insertarProductos(productos) {
     let contenidoHTML = "";
@@ -50,14 +64,7 @@ function insertarProductos(productos) {
 
     contenedorProductos.innerHTML = contenidoHTML;
 
-    // Agregar eventos a los botones después de insertar el contenido
-    document.querySelectorAll(".card-producto button").forEach(boton => {
-        boton.addEventListener("click", (e) => {
-            const productoId = parseInt(e.target.getAttribute("data-id"));
-            const productoSeleccionado = listaProductos.find(prod => prod.id === productoId);
-            agregarAlCarrito(productoSeleccionado);
-        });
-    });
+    asignarEventosBotones();
 }
 
 function agregarAlCarrito(producto) {
